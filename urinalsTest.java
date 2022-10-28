@@ -1,3 +1,4 @@
+import java.io.IOException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +29,7 @@ public class urinalsTest {
          Assertions.assertEquals( false , ur.goodString("001=1010"));
          Assertions.assertEquals( false , ur.goodString("10;110100"));
          Assertions.assertEquals( false , ur.goodString("111001fef0"));
-         Assertions.assertEquals( false , ur.goodString("10z"));
+         Assertions.assertEquals( false , ur.goodString("-10"));
     }
 
     @Test
@@ -60,8 +61,10 @@ public class urinalsTest {
     }
 
     @Test
-    void testRead() {
+    void testRead() throws IOException {
+        System.out.println("====== Anish Nair == TEST FOUR EXECUTED ======="); 
         
+         Assertions.assertEquals(null , urinals.read("rule10.txt"));
     }
     
 }
