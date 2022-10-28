@@ -1,6 +1,7 @@
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -61,24 +62,15 @@ public class urinals {
                 j[i] = obj.countUrinals(li.get(i));
 
             }
-            FileOutputStream fos = new FileOutputStream(rulename);
-     
-            /*
-             * To create DataOutputStream object from FileOutputStream use,
-             * DataOutputStream(OutputStream os) constructor.
-             *
-             */
+            FileWriter writer = new FileWriter(rulename);
+      
+      
+      for (int i = 0; i < z; i++) {
+         writer.write(j[i] + "\n"+ "");
+      }
+      writer.close();
+        }
             
-             DataOutputStream dos = new DataOutputStream(fos);
-               int i;
-            for(i = 0; i< z ; i++) {
-                System.out.print(j[i]);
-                dos.writeInt(j[i]);
-            }
-    
-           
-               dos.close();
-           }
         }
         //urinals obj = new urinals();
         
