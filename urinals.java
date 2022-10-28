@@ -1,8 +1,33 @@
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Scanner;
 
 public class urinals {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         urinals obj = new urinals();
+
+        try {
+            File myObj = new File("rule.txt");
+            if (myObj.createNewFile()) {
+            } else {
+                int n = 1;
+              while(n !=0){
+                File mo = new File("rule"+n+".txt");
+                if (mo.createNewFile()){
+                    n = 0;
+                }
+                else{
+                    n++;
+                }
+              }
+            }
+        }
+            
+
         System.out.println("Take input from \n1. Keyboard\n2. Text file");
         Scanner scan = new Scanner(System.in);
         int dec = scan.nextInt();
@@ -19,10 +44,26 @@ public class urinals {
             }
         }
         if(dec == 2){
-            
+            List<String> li = read("urinal.dat");
+            int z = li.size();
+            int[] j = new int[z];
+            for(int i = 0; i<z;i++){
+                j[i] = obj.countUrinals(li.get(i));
+
+            }
         }
         //urinals obj = new urinals();
         
+    }
+    public static List<String> read(String filename) throws IOException {
+        Path lul = Paths.get(filename);
+        if (Files.exists(lul)) {
+            return Files.readAllLines(lul);
+        }
+        return null;
+    }
+    public static List<String> write(int[] arr) throws IOException{
+
     }
     Boolean goodString( String str ) {  // checks to see if valid string 
         int i = 0;
