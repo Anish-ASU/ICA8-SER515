@@ -1,4 +1,6 @@
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,16 +10,21 @@ import java.util.Scanner;
 
 public class urinals {
     public static void main(String[] args) throws IOException {
+        int rulenum = 0;
         urinals obj = new urinals();
+        String rulename = "rule";
 
         try {
             File myObj = new File("rule.txt");
             if (myObj.createNewFile()) {
+                rulename = "rule.txt";
             } else {
                 int n = 1;
               while(n !=0){
                 File mo = new File("rule"+n+".txt");
                 if (mo.createNewFile()){
+                    rulename = "rule"+n+".txt";
+                    rulenum = n;
                     n = 0;
                 }
                 else{
@@ -54,10 +61,27 @@ public class urinals {
                 j[i] = obj.countUrinals(li.get(i));
 
             }
+            FileOutputStream fos = new FileOutputStream(rulename);
+     
+            /*
+             * To create DataOutputStream object from FileOutputStream use,
+             * DataOutputStream(OutputStream os) constructor.
+             *
+             */
+            
+             DataOutputStream dos = new DataOutputStream(fos);
+               int i;
+            for(i = 0; i< z ; i++) {
+                System.out.print(j[i]);
+                dos.writeInt(j[i]);
+            }
+    
+           
+               dos.close();
+           }
         }
         //urinals obj = new urinals();
         
-    }
     public static List<String> read(String filename) throws IOException {
         Path lul = Paths.get(filename);
         if (Files.exists(lul)) {
