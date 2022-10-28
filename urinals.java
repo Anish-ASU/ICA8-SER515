@@ -2,7 +2,25 @@ import java.util.Scanner;
 
 public class urinals {
     public static void main(String[] args) {
-        
+        urinals obj = new urinals();
+        System.out.println("Take input from \n1. Keyboard\n2. Text file");
+        Scanner scan = new Scanner(System.in);
+        int dec = scan.nextInt();
+        if(dec == 1){
+            System.out.println("Enter string:");
+            String input = scan.next();
+            boolean gstring = obj.goodString(input);
+            if(gstring == true){
+                int c = obj.countUrinals(input);
+                System.out.printf("%d",c);
+            }
+            if(gstring == false){
+                System.out.println("The String input is out of bounds.");
+            }
+        }
+        if(dec == 2){
+            
+        }
         //urinals obj = new urinals();
         
     }
