@@ -25,6 +25,9 @@ public class urinals {
                 }
               }
             }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
         }
             
 
@@ -62,9 +65,9 @@ public class urinals {
         }
         return null;
     }
-    public static List<String> write(int[] arr) throws IOException{
+    // public static List<String> write(int[] arr) throws IOException{
 
-    }
+    // }
     Boolean goodString( String str ) {  // checks to see if valid string 
         int i = 0;
         int j = str.length();
