@@ -3,16 +3,37 @@ import org.junit.jupiter.api.Test;
 
 public class urinalsTest {
     @Test
-    void testGoodString() {
+    void testGoodString_true() {
         System.out.println("====== Anish Nair == TEST ONE EXECUTED ======="); 
         urinals ur = new urinals();
          Assertions.assertEquals( true , ur.goodString("1010"));
-         
+         Assertions.assertEquals( true , ur.goodString("101110"));
+         Assertions.assertEquals( true , ur.goodString("1001010"));
+         Assertions.assertEquals( true , ur.goodString("10110010"));
+         Assertions.assertEquals( true , ur.goodString("10100111"));
+         Assertions.assertEquals( true , ur.goodString("0011010"));
+         Assertions.assertEquals( true , ur.goodString("10110100"));
+         Assertions.assertEquals( true , ur.goodString("1110010"));
+         Assertions.assertEquals( true , ur.goodString("10"));
+    }
+
+    void testGoodString_false() {
+        System.out.println("====== Anish Nair == TEST TWO EXECUTED ======="); 
+        urinals ur = new urinals();
+         Assertions.assertEquals( false , ur.goodString("10w10"));
+         Assertions.assertEquals( false , ur.goodString("1011A10"));
+         Assertions.assertEquals( false , ur.goodString("1001?010"));
+         Assertions.assertEquals( false , ur.goodString("1012410010"));
+         Assertions.assertEquals( false , ur.goodString("101900111"));
+         Assertions.assertEquals( false , ur.goodString("001=1010"));
+         Assertions.assertEquals( false , ur.goodString("10;110100"));
+         Assertions.assertEquals( false , ur.goodString("111001fef0"));
+         Assertions.assertEquals( false , ur.goodString("10z"));
     }
 
     @Test
     void testCountUrinals() {
-        System.out.println("====== Anish Nair == TEST TWO EXECUTED ======="); 
+        System.out.println("====== Anish Nair == TEST THIRD EXECUTED ======="); 
         urinals ur = new urinals();
          Assertions.assertEquals( 0 , ur.countUrinals("1010"));
          Assertions.assertEquals( 0 , ur.countUrinals("10101"));
